@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>2018 World Cup Experience</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <h1 class="billBoard">Welcome to your 2018 World Cup Experience!</h1>
+
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h2>List of Teams</h2>
+                    <div class="teams">
+
+                    </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <footer>
+        <footer>
+
+            <script>
+                $.ajax({
+                    headers: {
+                        'X-Auth-Token': '6bb784251d714643b8914d548e60bf7b'
+                    },
+                    url: 'http://api.football-data.org/v1/competitions/467/teams',
+                    dataType: 'json',
+                    type: 'GET',
+                }).done(function (response) {
+                    for (var i = 0; i < response.teams.length; i++) {
+                        console.log(response.teams[i].name);
+                    }
+                });
+                //append the data
+                $(".teams").append(name); 
+
+            </script>
+</body>
+
+</html>
