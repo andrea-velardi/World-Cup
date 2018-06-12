@@ -31,13 +31,8 @@
             </div>
 
             <div class="col-sm-6">
-                <table class="teams">
-                    <h2>List of Teams</h2>
-                    <tr>
-                        <th>Team Name</th>
-                        <div id="teamNamesId"></div>
-                    </tr>
-                </table>
+                <h2>List of Teams</h2>
+                <div id="teamNamesIdContainer"></div>
             </div>
 
 
@@ -56,7 +51,7 @@
         <footer>
 
             <script>
-                var teamNames = document.getElementById("teamNamesId");
+                var teamNames = document.getElementById("teamNamesIdContainer");
 
                 $.ajax({
                     headers: {
@@ -66,14 +61,23 @@
                     dataType: 'json',
                     type: 'GET',
                 }).done(function (response) {
+                    console.log(response.teams.length)
                     for (var i = 0; i < response.teams.length; i++) {
+                        //display name
                         var newTeamName = document.createElement("p");
+                        
                         newTeamName.textContent = response.teams[i].name;
-                        console.log(response.teams[i].name);
-                        drinkDiv.appendChild(newDrinkP);
+                        teamNames.appendChild(newTeamName);
+                        //display image
+                        var newTeamImage = document.createElement("img");
+                        newTeamImage.src = response.teams[i].crestUrl
+                        newTeamImage.style.width = "50px"; 
+                        newTeamImage.style.height = "50px"; 
+                        teamNames.appendChild(newTeamImage);
+
+                        // console.log("URI", response.teams[i]);
                     }
                 });
-
             </script>
 </body>
 
